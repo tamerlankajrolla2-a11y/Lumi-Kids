@@ -1,4 +1,4 @@
-/* LUMI KIDS — витрина: каталог, карточка товара, корзина, оформление заказа, настройки. */
+/* ALISA KIDS — витрина: каталог, карточка товара, корзина, оформление заказа, настройки. */
 (function () {
 'use strict';
 document.documentElement.classList.add('js');
@@ -35,7 +35,7 @@ applyPrefs();
 /* ===== страница ===== */
 function paintPage() {
   S = D.settings;
-  var nm = String(S.name || 'LUMI KIDS').trim(), parts = nm.split(/\s+/);
+  var nm = String(S.name || 'ALISA KIDS').trim(), parts = nm.split(/\s+/);
   var brand = parts.length > 1 ? esc(parts.slice(0, -1).join(' ')) + ' <i>' + esc(parts[parts.length - 1]) + '</i>' : esc(nm);
   $$('.brand').forEach(function (b) { b.innerHTML = brand; });
   document.title = nm + ' — детская одежда · Казахстан';
@@ -285,7 +285,7 @@ function sendOrder(via, btn) {
   };
   ls('lk_client', { name: o.name, phone: o.phone, city: city, del: del });
   if (via === 'wa') {
-    var L = ['Здравствуйте! Хочу оформить заказ в ' + (S.name || 'LUMI KIDS') + ':', ''];
+    var L = ['Здравствуйте! Хочу оформить заказ в ' + (S.name || 'ALISA KIDS') + ':', ''];
     o.items.forEach(function (x, i) { L.push((i + 1) + ') ' + x.name + ' × ' + x.qty + (x.price ? ' — ' + money(x.price * x.qty) : ' — цена по запросу')); });
     L.push('', 'Итого: ' + (o.total ? money(o.total) : '—') + (o.tbd ? ' (+ уточнить цену)' : ''), '', 'Имя: ' + o.name, 'Телефон: ' + o.phone, 'Доставка: ' + del + (city ? ', г. ' + city : ''));
     if (note) L.push('Комментарий: ' + note);
@@ -317,7 +317,7 @@ function openSettings() {
     '<div class="srow"><div><b>Тёмная тема</b><small>Удобнее смотреть вечером</small></div><button class="tg" id="swDark" role="switch" aria-checked="false" aria-label="Тёмная тема"></button></div>' +
     '<div class="srow"><div><b>Крупный текст</b><small>Увеличить размер шрифта</small></div><button class="tg" id="swBig" role="switch" aria-checked="false" aria-label="Крупный текст"></button></div>' +
     '<div class="promo"><h3>Хотите похожий сайт для бизнеса?</h3><p>Сделаю такой же сайт для вашего дела — с каталогом, корзиной и админкой, под ключ.</p>' +
-    '<a href="' + esc(waUrl('Здравствуйте! Увидел сайт ' + (S.name || 'LUMI KIDS') + ' — хочу такой же сайт для своего бизнеса.', DEV_WA)) + '" target="_blank" rel="noopener">' + ICON('wa', '') + 'Написать: ' + DEV_PRETTY + '</a></div>' +
+    '<a href="' + esc(waUrl('Здравствуйте! Увидел сайт ' + (S.name || 'ALISA KIDS') + ' — хочу такой же сайт для своего бизнеса.', DEV_WA)) + '" target="_blank" rel="noopener">' + ICON('wa', '') + 'Написать: ' + DEV_PRETTY + '</a></div>' +
     '<a class="own-l" href="admin.html" rel="nofollow">Вход для владельца магазина</a></div>';
   applyPrefs(); openSheet('set');
   $('#swDark').onclick = function () { ls('lk_dark', ls('lk_dark') === 1 ? 0 : 1); applyPrefs(); };

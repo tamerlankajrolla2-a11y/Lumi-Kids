@@ -1,4 +1,4 @@
-/* LUMI KIDS — админка: заказы, товары, категории, настройки магазина, Telegram, пароль. */
+/* ALISA KIDS — админка: заказы, товары, категории, настройки магазина, Telegram, пароль. */
 (function () {
 'use strict';
 var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -106,7 +106,7 @@ function orderHTML(o) {
   var ph = String(o.phone || '').replace(/\D/g, ''); if (ph.length === 11 && ph[0] === '8') ph = '7' + ph.slice(1); if (ph.length === 10) ph = '7' + ph;
   var items = Array.isArray(o.items) ? o.items : [];
   var when = isNaN(d) ? '' : d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' }) + ', ' + d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-  var waText = 'Здравствуйте, ' + (o.name || '') + '! Это ' + (D && D.settings.name || 'LUMI KIDS') + '. Получили ваш заказ №' + o.id + '.';
+  var waText = 'Здравствуйте, ' + (o.name || '') + '! Это ' + (D && D.settings.name || 'ALISA KIDS') + '. Получили ваш заказ №' + o.id + '.';
   return '<div class="card ord' + ((o.status || 'new') === 'new' ? ' nw' : '') + '">' +
     '<div class="oh"><div><b>№' + esc(o.id) + ' · ' + esc(o.name || 'Без имени') + '</b><small>' + esc(when) + ' · ' + (o.via === 'whatsapp' ? 'через WhatsApp' : 'на сайте') + '</small></div><span class="st ' + st[2] + '">' + st[1] + '</span></div>' +
     '<div class="oc">' + (o.phone ? '<div>📞 <a href="tel:+' + ph + '">' + esc(o.phone) + '</a> · <a href="https://wa.me/' + ph + '?text=' + encodeURIComponent(waText) + '" target="_blank" rel="noopener">WhatsApp</a></div>' : '') +
@@ -235,7 +235,7 @@ function vShop() {
   $('#view').innerHTML = '<h2 class="t">Магазин</h2><p class="note">Тексты и контакты на сайте. Изменения сохраняются сами.</p>' +
     '<div class="card"><h3 class="c">Основное</h3>' + F('Название магазина', 'settings.name') + F('Подпись', 'settings.tagline', { ph: 'Детская одежда · 2–12 лет' }) +
       '<div class="g2">' + F('WhatsApp для заказов', 'settings.wa', { hint: 'только цифры, с 7', ph: '77026288740' }) + F('Телефон на сайте', 'settings.phone', { ph: '+7 702 628 87 40' }) + '</div>' +
-      '<div class="g2">' + F('Instagram', 'settings.instagram', { ph: 'lumikids.kz' }) + F('Город', 'settings.city', { ph: 'Казахстан' }) + '</div></div>' +
+      '<div class="g2">' + F('Instagram', 'settings.instagram', { ph: 'alisakids.kz' }) + F('Город', 'settings.city', { ph: 'Казахстан' }) + '</div></div>' +
     '<div class="card"><h3 class="c">Строка сверху</h3>' + SW('Показывать', 'settings.announce.on') + F('Текст', 'settings.announce.text', { ph: 'Скидка 10% на всё до воскресенья' }) + '</div>' +
     '<div class="card"><h3 class="c">Главный экран</h3>' + F('Заголовок', 'settings.heroTitle', { hint: 'слова в *звёздочках* будут курсивом' }) + F('Текст под заголовком', 'settings.heroSub', { area: 1, rows: 3 }) +
       '<div class="fld">Фото на главном <span class="muted">нажмите, чтобы выбрать другое</span></div><div class="hero3">' + [0, 1, 2].map(function (k) { var im = S.heroImgs[k]; return '<button class="phi" type="button" data-hero="' + k + '">' + (im ? '<img src="' + esc(Store.img(im)) + '" alt="">' : '<div class="addph" style="height:100%"><div><span>+</span>Выбрать</div></div>') + (k === 0 ? '<span class="m">Большое</span>' : '') + '</button>'; }).join('') + '</div></div>' +

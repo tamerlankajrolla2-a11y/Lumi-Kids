@@ -1,4 +1,4 @@
-/* LUMI KIDS — слой данных.
+/* ALISA KIDS — слой данных.
    Товары, категории, настройки, заказы, фото и вход в админку хранятся на сервере sites-api
    (Cloudflare Worker + D1, сайт "lumikids"). Если сервер недоступен, сайт берёт данные
    из последней сохранённой копии или из data/site.json.
@@ -61,7 +61,7 @@ window.Store = (function () {
   function normalize(d) {
     d = d || {};
     var s = d.settings = d.settings || {};
-    s.name = s.name || 'LUMI KIDS';
+    s.name = s.name || 'ALISA KIDS';
     s.wa = String(s.wa || '').replace(/\D/g, '');
     s.announce = s.announce || { on: false, text: '' };
     s.heroImgs = arr(s.heroImgs).filter(Boolean);
