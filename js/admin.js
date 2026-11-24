@@ -41,7 +41,8 @@ function boot(first) {
   $('#gate').hidden = true; $('#app').hidden = false;
   Store.load(true).then(function (d) {
     D = d; render();
-    if (first) Store.save(D).then(function () { sv('ok'); }).catch(function () { });
+    /* первое подключение или новая версия каталога от разработчика — сразу кладём на сервер */
+    if (first || Store.upgraded()) Store.save(D).then(function () { sv('ok'); if (!first) toast('Каталог обновлён до новой версии'); }).catch(function () { });
   }).catch(function (e) { toast('Не загрузилось: ' + e.message); });
   loadOrders(true);
 }
@@ -51,6 +52,7 @@ if (Store.authed()) boot(false); else gate();
 var saveT = null;
 function sv(s) { var el = $('#sv'); el.className = 'sv ' + s; el.textContent = s === 'ok' ? '✓ сохранено' : s === 'err' ? '⚠ не сохранено' : 'сохраняю…'; }
 function touch() {
+  if (D) D.edited = true;
   sv('busy'); clearTimeout(saveT);
   saveT = setTimeout(function () { Store.save(D).then(function () { sv('ok'); }).catch(function (e) { sv('err'); toast('Не сохранилось: ' + e.message); if (e.status === 401) gate(); }); }, 700);
 }

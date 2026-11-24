@@ -82,23 +82,33 @@ window.Store = (function () {
     return d;
   }
 
-  var cache = null;
+  /* Новая версия каталога от разработчика (data/site.json с большим rev) заменяет данные сервера,
+     только если владелец ещё ничего не менял в админке (edited !== true). */
+  var cache = null, upgraded = false;
   function load(force) {
     if (cache && !force) return Promise.resolve(cache);
+    upgraded = false;
+    var file = fromFile().catch(function () { return null; });
     return req('/menu', { timeout: 6000 }).then(function (r) {
       var d = r && r.data;
-      if (d && d.settings && d.products) { ls(LS_DATA, d); return normalize(d); }
-      return fromFile().then(normalize);
+      return file.then(function (f) {
+        if (d && d.settings && d.products) {
+          if (f && f.settings && (+f.rev || 1) > (+d.rev || 1) && !d.edited) { upgraded = true; return normalize(f); }
+          ls(LS_DATA, d); return normalize(d);
+        }
+        if (f) return normalize(f);
+        throw new Error('нет данных');
+      });
     }).catch(function () {
       var local = ls(LS_DATA);
-      return local && local.settings ? normalize(local) : fromFile().then(normalize);
+      return local && local.settings ? normalize(local) : file.then(function (f) { if (!f) throw new Error('нет данных'); return normalize(f); });
     }).then(function (d) { cache = d; return d; });
   }
   function save(d) {
-    cache = normalize(d);
+    cache = normalize(d); upgraded = false;
     return req('/menu', { method: 'PUT', auth: true, body: JSON.stringify(cache) }).then(function () { ls(LS_DATA, cache); return true; });
   }
-  function reset() { return fromFile().then(normalize).then(function (d) { return save(d).then(function () { return cache; }); }); }
+  function reset() { return fromFile().then(normalize).then(function (d) { d.edited = false; return save(d).then(function () { return cache; }); }); }
 
   function createOrder(o) { return req('/order', { method: 'POST', body: o, keepalive: true }).then(function (r) { return (r && r.id) || true; }).catch(function () { return false; }); }
   function listOrders(limit) { return req('/orders?limit=' + (limit || 300), { auth: true }); }
@@ -127,7 +137,7 @@ window.Store = (function () {
   function changePassword(pw) { return req('/password', { method: 'POST', auth: true, body: { password: pw } }); }
 
   return {
-    load: load, save: save, reset: reset, fromFile: fromFile, normalize: normalize, img: img, slug: slug,
+    load: load, save: save, upgraded: function () { return upgraded; }, reset: reset, fromFile: fromFile, normalize: normalize, img: img, slug: slug,
     createOrder: createOrder, listOrders: listOrders, setStatus: setStatus, removeOrder: removeOrder,
     upload: upload, removeImg: removeImg, tgInfo: tgInfo, tgLink: tgLink, tgOff: tgOff,
     login: login, register: register, connected: connected, logout: logout, authed: authed, changePassword: changePassword,

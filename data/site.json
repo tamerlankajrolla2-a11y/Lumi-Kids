@@ -1,122 +1,499 @@
 {
-  "rev": 1,
-  "settings": {
-    "name": "LUMI KIDS",
-    "tagline": "Детская одежда · 2–12 лет",
-    "wa": "77026288740",
-    "phone": "+7 702 628 87 40",
-    "instagram": "",
-    "city": "Казахстан",
-    "announce": { "on": true, "text": "Доставка по Казахстану, СНГ и миру · Заказ в WhatsApp" },
-    "heroTitle": "Одежда, которую *не хочется* снимать",
-    "heroSub": "Мягкий трикотаж, который дышит и не скатывается. Своё производство и проверенные находки для детей от 2 до 12 лет.",
-    "heroImgs": ["img/set-black-girl-1.jpg", "img/dvoyka-red-1.jpg", "img/dvoyka-lilac-1.jpg"],
-    "features": [
-      "Качественный трикотаж, который не скатывается",
-      "Мягко, дышаще, безопасно для кожи ребёнка",
-      "Прочная фурнитура и ровные швы",
-      "Одежда для детей от 2 до 12 лет"
-    ],
-    "aboutTitle": "Стиль вне времени для детей",
-    "aboutText": "Шьём детскую одежду сами — поэтому следим за каждой деталью: от ткани до пуговиц. А ещё подбираем для вас удобные вещи, которые сами бы надели на своих детей.",
-    "delivery": [
-      "Самовывоз",
-      "Доставка по городу",
-      "По Казахстану (Казпочта, СДЭК)",
-      "СНГ и другие страны"
-    ],
-    "orderNote": "После заказа мы напишем вам в WhatsApp, уточним размер и стоимость доставки.",
-    "sizeGuide": [
-      { "size": "92", "age": "2 года" },
-      { "size": "98", "age": "3 года" },
-      { "size": "104", "age": "4 года" },
-      { "size": "110", "age": "5 лет" },
-      { "size": "116", "age": "6 лет" },
-      { "size": "122", "age": "7 лет" },
-      { "size": "128", "age": "8 лет" }
-    ]
+ "rev": 2,
+ "settings": {
+  "name": "LUMI KIDS",
+  "tagline": "Детская одежда · 2–12 лет",
+  "wa": "77026288740",
+  "phone": "+7 702 628 87 40",
+  "instagram": "",
+  "city": "Казахстан",
+  "announce": {
+   "on": true,
+   "text": "Доставка по Казахстану, СНГ и миру · Заказ в WhatsApp"
   },
-  "cats": [
-    { "id": "sets", "name": "Комплекты" },
-    { "id": "bombers", "name": "Бомберы" },
-    { "id": "pants", "name": "Брюки" },
-    { "id": "skirts", "name": "Юбки" }
+  "heroTitle": "Одежда, которую *не хочется* снимать",
+  "heroSub": "Мягкий трикотаж, который дышит и не скатывается. Своё производство и проверенные находки для детей от 2 до 12 лет.",
+  "heroImgs": [
+   "img/set-black-girl-1.jpg",
+   "img/cat-dvoyka-redwhite-girl.jpg",
+   "img/dvoyka-lilac-1.jpg"
   ],
-  "products": [
-    {
-      "id": "dvoyka-klesh", "name": "Двойка клёш", "cat": "sets", "price": 5500, "old": 0, "badge": "Хит",
-      "desc": "Кофта и брюки-клёш из мягкого хлопкового трикотажа. Дышащая ткань, не скатывается после стирок.",
-      "sizes": ["92", "98", "104", "110"], "own": true, "on": true, "soldout": false,
-      "colors": [
-        { "name": "Красный", "hex": "#D8392F", "imgs": ["img/dvoyka-red-1.jpg", "img/dvoyka-red-2.jpg"] },
-        { "name": "Сиреневый", "hex": "#D9C3F0", "imgs": ["img/dvoyka-lilac-1.jpg", "img/dvoyka-lilac-2.jpg"] },
-        { "name": "Лайм", "hex": "#C6E33A", "imgs": ["img/dvoyka-lime.jpg"] }
-      ]
-    },
-    {
-      "id": "bomber-skirt", "name": "Комплект: бомбер + юбка", "cat": "sets", "price": 0, "old": 0, "badge": "",
-      "desc": "Бомбер с карманами на кнопках и юбка на мягкой резинке. Золотистые пуговицы, плотный трикотаж.",
-      "sizes": ["110", "116", "122", "128"], "own": true, "on": true, "soldout": false,
-      "colors": [
-        { "name": "Чёрный", "hex": "#1C1A1D", "imgs": ["img/set-black-girl-1.jpg", "img/set-black-girl-2.jpg", "img/set-black-flat.jpg", "img/bomber-black-gold-flat.jpg"] }
-      ]
-    },
-    {
-      "id": "bomber-snaps", "name": "Бомбер на кнопках", "cat": "bombers", "price": 0, "old": 0, "badge": "Новинка",
-      "desc": "Трикотажный бомбер на осенний сезон: мягкий, не скатывается. Карманы и манжеты на резинке.",
-      "sizes": ["110", "116", "122", "128"], "own": true, "on": true, "soldout": false,
-      "colors": [
-        { "name": "Тёмно-синий", "hex": "#1F2B5C", "imgs": ["img/bomber-navy-girl-1.jpg", "img/bomber-navy-girl-2.jpg", "img/bomber-navy-snaps-flat-1.jpg", "img/bomber-navy-snaps-flat-2.jpg"] },
-        { "name": "Чёрный", "hex": "#1C1A1D", "imgs": ["img/bomber-black-boy-1.jpg", "img/bomber-black-boy-2.jpg"] }
-      ]
-    },
-    {
-      "id": "skirt-gold", "name": "Юбка с золотыми пуговицами", "cat": "skirts", "price": 0, "old": 0, "badge": "",
-      "desc": "Юбка на мягкой резинке из качественного трикотажа. Отлично смотрится в комплекте с бомбером.",
-      "sizes": ["110", "116", "122", "128"], "own": true, "on": true, "soldout": false,
-      "colors": [
-        { "name": "Чёрный", "hex": "#1C1A1D", "imgs": ["img/set-black-girl-2.jpg", "img/skirt-black-flat.jpg"] }
-      ]
-    },
-    {
-      "id": "set-navy", "name": "Комплект: бомбер + брюки", "cat": "sets", "price": 0, "old": 0, "badge": "",
-      "desc": "Бомбер на молнии с карманами и широкие брюки со стрелкой из плотного трикотажа.",
-      "sizes": ["110", "116", "122", "128"], "own": true, "on": true, "soldout": false,
-      "colors": [
-        { "name": "Тёмно-синий", "hex": "#1F2B5C", "imgs": ["img/set-navy-flat-1.jpg", "img/set-navy-flat-2.jpg"] }
-      ]
-    },
-    {
-      "id": "bomber-zip", "name": "Бомбер на молнии", "cat": "bombers", "price": 0, "old": 0, "badge": "",
-      "desc": "Удобный бомбер с накладными карманами и мягкой резинкой по низу.",
-      "sizes": ["110", "116", "122", "128"], "own": true, "on": true, "soldout": false,
-      "colors": [
-        { "name": "Тёмно-синий", "hex": "#1F2B5C", "imgs": ["img/bomber-navy-zip-flat-1.jpg", "img/bomber-navy-zip-flat-2.jpg"] }
-      ]
-    },
-    {
-      "id": "pants-wide", "name": "Брюки широкие со стрелкой", "cat": "pants", "price": 0, "old": 0, "badge": "",
-      "desc": "Мягкий трикотаж, удобная резинка на поясе. Не скатываются.",
-      "sizes": ["110", "116", "122", "128"], "own": true, "on": true, "soldout": false,
-      "colors": [
-        { "name": "Тёмно-синий", "hex": "#1F2B5C", "imgs": ["img/pants-navy-wide-flat.jpg"] }
-      ]
-    },
-    {
-      "id": "pants-jogger", "name": "Джоггеры на манжетах", "cat": "pants", "price": 0, "old": 0, "badge": "",
-      "desc": "Брюки на резинке с карманами и манжетами. Мягкие и удобные на каждый день.",
-      "sizes": ["110", "116", "122", "128"], "own": true, "on": true, "soldout": false,
-      "colors": [
-        { "name": "Тёмно-синий", "hex": "#1F2B5C", "imgs": ["img/pants-navy-jogger-flat-1.jpg", "img/pants-navy-jogger-flat-2.jpg"] }
-      ]
-    },
-    {
-      "id": "pants-cargo", "name": "Брюки с накладными карманами", "cat": "pants", "price": 0, "old": 0, "badge": "",
-      "desc": "Трикотажные брюки на резинке с боковыми карманами. Прямой низ, не скатываются.",
-      "sizes": ["110", "116", "122", "128"], "own": true, "on": true, "soldout": false,
-      "colors": [
-        { "name": "Чёрный", "hex": "#1C1A1D", "imgs": ["img/pants-black-cargo-flat-1.jpg", "img/pants-black-cargo-flat-2.jpg"] }
-      ]
-    }
+  "features": [
+   "Качественный трикотаж, который не скатывается",
+   "Мягко, дышаще, безопасно для кожи ребёнка",
+   "Прочная фурнитура и ровные швы",
+   "Одежда для детей от 2 до 12 лет"
+  ],
+  "aboutTitle": "Стиль вне времени для детей",
+  "aboutText": "Шьём детскую одежду сами — поэтому следим за каждой деталью: от ткани до пуговиц. А ещё подбираем для вас удобные вещи, которые сами бы надели на своих детей.",
+  "delivery": [
+   "Самовывоз",
+   "Доставка по городу",
+   "По Казахстану (Казпочта, СДЭК)",
+   "СНГ и другие страны"
+  ],
+  "orderNote": "После заказа мы напишем вам в WhatsApp, уточним размер и стоимость доставки.",
+  "sizeGuide": [
+   {
+    "size": "92",
+    "age": "2 года"
+   },
+   {
+    "size": "98",
+    "age": "3 года"
+   },
+   {
+    "size": "104",
+    "age": "4 года"
+   },
+   {
+    "size": "110",
+    "age": "5 лет"
+   },
+   {
+    "size": "116",
+    "age": "6 лет"
+   },
+   {
+    "size": "122",
+    "age": "7 лет"
+   },
+   {
+    "size": "128",
+    "age": "8 лет"
+   }
   ]
+ },
+ "cats": [
+  {
+   "id": "sets",
+   "name": "Комплекты"
+  },
+  {
+   "id": "bombers",
+   "name": "Бомберы"
+  },
+  {
+   "id": "pants",
+   "name": "Брюки"
+  },
+  {
+   "id": "skirts",
+   "name": "Юбки"
+  },
+  {
+   "id": "tops",
+   "name": "Кофты и свитшоты"
+  }
+ ],
+ "products": [
+  {
+   "id": "dvoyka-klesh",
+   "name": "Двойка клёш",
+   "cat": "sets",
+   "price": 5500,
+   "old": 0,
+   "badge": "Хит",
+   "desc": "Трикотажная хлопковая двойка: кофта и брюки-клёш. Хлопок высшего качества, не скатывается. Очень мягкая, комфортная и дышащая ткань — на все случаи жизни.",
+   "sizes": [
+    "92",
+    "98",
+    "104",
+    "110"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Красно-белый",
+     "hex": "#E4574C",
+     "imgs": [
+      "img/cat-dvoyka-redwhite-girl.jpg",
+      "img/dvoyka-redwhite-flat-1.jpg"
+     ]
+    },
+    {
+     "name": "Красный",
+     "hex": "#D8392F",
+     "imgs": [
+      "img/dvoyka-red-1.jpg",
+      "img/dvoyka-red-2.jpg",
+      "img/dvoyka-red-flat-1.jpg",
+      "img/dvoyka-red-flat-2.jpg"
+     ]
+    },
+    {
+     "name": "Сиреневый",
+     "hex": "#D9C3F0",
+     "imgs": [
+      "img/dvoyka-lilac-1.jpg",
+      "img/dvoyka-lilac-2.jpg",
+      "img/dvoyka-lilac-flat-1.jpg",
+      "img/dvoyka-lilac-flat-2.jpg"
+     ]
+    },
+    {
+     "name": "Лайм",
+     "hex": "#C6E33A",
+     "imgs": [
+      "img/dvoyka-lime.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bomber-skirt",
+   "name": "Комплект: бомбер + юбка",
+   "cat": "sets",
+   "price": 0,
+   "old": 0,
+   "badge": "",
+   "desc": "Бомбер с карманами на кнопках и юбка на мягкой резинке. Золотистая металлическая фурнитура, плотный трикотаж, который не скатывается.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Чёрный",
+     "hex": "#1C1A1D",
+     "imgs": [
+      "img/set-black-girl-1.jpg",
+      "img/set-black-girl-2.jpg",
+      "img/cat-set-black-skirt-card.jpg",
+      "img/set-black-flat.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bomber-snaps",
+   "name": "Бомбер на кнопках",
+   "cat": "bombers",
+   "price": 0,
+   "old": 0,
+   "badge": "Новинка",
+   "desc": "Бомбер на кнопках из качественного трикотажа на осенний сезон: мягкий, не скатывается. Карманы, манжеты и пояс на резинке.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Тёмно-синий",
+     "hex": "#1F2B5C",
+     "imgs": [
+      "img/bomber-navy-girl-1.jpg",
+      "img/bomber-navy-girl-2.jpg",
+      "img/cat-bomber-navy.jpg",
+      "img/bomber-navy-snaps-flat-1.jpg",
+      "img/bomber-navy-snaps-flat-2.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "set-boy",
+   "name": "Комплект для мальчика: бомбер + брюки",
+   "cat": "sets",
+   "price": 0,
+   "old": 0,
+   "badge": "",
+   "desc": "Бомбер на матовых кнопках с боковыми карманами и брюки на резинке с накладными карманами. Стойка-воротник и манжеты из рибаны, ровные швы.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Чёрный",
+     "hex": "#1C1A1D",
+     "imgs": [
+      "img/bomber-black-boy-1.jpg",
+      "img/bomber-black-boy-2.jpg",
+      "img/cat-set-boy-black-card.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bomber-gold",
+   "name": "Бомбер с золотыми пуговицами",
+   "cat": "bombers",
+   "price": 0,
+   "old": 0,
+   "badge": "",
+   "desc": "Бомбер для девочек на качественных кнопках. Стойка-воротник из рибаны, декоративная золотистая фурнитура, манжеты и пояс из рибаны — защищают от ветра.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Чёрный",
+     "hex": "#1C1A1D",
+     "imgs": [
+      "img/cat-bomber-black-gold-main.jpg",
+      "img/cat-bomber-black-gold-card.jpg",
+      "img/bomber-black-gold-flat.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "skirt-gold",
+   "name": "Юбка с золотыми пуговицами",
+   "cat": "skirts",
+   "price": 0,
+   "old": 0,
+   "badge": "",
+   "desc": "Юбка на эластичном поясе из качественного трикотажа: не скатывается, мягкая и удобная. Металлические пуговицы, ровные строчки.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Чёрный",
+     "hex": "#1C1A1D",
+     "imgs": [
+      "img/cat-skirt-main.jpg",
+      "img/cat-skirt-card.jpg",
+      "img/skirt-black-flat.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pants-wide",
+   "name": "Брюки широкие со стрелкой",
+   "cat": "pants",
+   "price": 0,
+   "old": 0,
+   "badge": "",
+   "desc": "Брюки для девочек из качественного трикотажа, который не скатывается. Мягкая резинка на поясе, стрелки спереди.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Тёмно-синий",
+     "hex": "#1F2B5C",
+     "imgs": [
+      "img/cat-pants-navy-wide.jpg",
+      "img/pants-navy-wide-flat.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pants-cargo",
+   "name": "Брюки с накладными карманами",
+   "cat": "pants",
+   "price": 0,
+   "old": 0,
+   "badge": "",
+   "desc": "Трикотажные брюки на удобной резинке с вместительными накладными карманами. Мягкие, не скатываются.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Чёрный",
+     "hex": "#1C1A1D",
+     "imgs": [
+      "img/cat-pants-black-cargo.jpg",
+      "img/pants-black-cargo-flat-1.jpg",
+      "img/pants-black-cargo-flat-2.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bomber-rib",
+   "name": "Бомбер на золотых кнопках",
+   "cat": "bombers",
+   "price": 0,
+   "old": 0,
+   "badge": "Новинка",
+   "desc": "Мягкий трикотажный бомбер на золотистых кнопках. Широкий пояс и манжеты из рибаны, аккуратный воротник.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Розовый",
+     "hex": "#F1BFC9",
+     "imgs": [
+      "img/bomber-pink-flat-1.jpg",
+      "img/bomber-pink-flat-2.jpg",
+      "img/bomber-pink-flat-3.jpg"
+     ]
+    },
+    {
+     "name": "Серый",
+     "hex": "#BFC1C6",
+     "imgs": [
+      "img/bomber-grey-flat-1.jpg",
+      "img/bomber-grey-flat-2.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sweatshirt-pocket",
+   "name": "Свитшот с карманом",
+   "cat": "tops",
+   "price": 0,
+   "old": 0,
+   "badge": "Новинка",
+   "desc": "Серый свитшот из мягкого трикотажа с контрастным тёмно-синим карманом, горловиной и манжетами из рибаны.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Серый",
+     "hex": "#BFC1C6",
+     "imgs": [
+      "img/sweatshirt-grey-flat.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "set-navy",
+   "name": "Комплект: бомбер на молнии + брюки",
+   "cat": "sets",
+   "price": 0,
+   "old": 0,
+   "badge": "",
+   "desc": "Бомбер на молнии с карманами и широкие брюки со стрелкой из плотного трикотажа.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Тёмно-синий",
+     "hex": "#1F2B5C",
+     "imgs": [
+      "img/set-navy-flat-1.jpg",
+      "img/set-navy-flat-2.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bomber-zip",
+   "name": "Бомбер на молнии",
+   "cat": "bombers",
+   "price": 0,
+   "old": 0,
+   "badge": "",
+   "desc": "Удобный бомбер на молнии с накладными карманами и мягкой резинкой по низу.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Тёмно-синий",
+     "hex": "#1F2B5C",
+     "imgs": [
+      "img/bomber-navy-zip-flat-1.jpg",
+      "img/bomber-navy-zip-flat-2.jpg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pants-jogger",
+   "name": "Джоггеры на манжетах",
+   "cat": "pants",
+   "price": 0,
+   "old": 0,
+   "badge": "",
+   "desc": "Брюки на резинке с карманами и манжетами. Мягкие и удобные на каждый день.",
+   "sizes": [
+    "110",
+    "116",
+    "122",
+    "128"
+   ],
+   "own": true,
+   "on": true,
+   "soldout": false,
+   "colors": [
+    {
+     "name": "Тёмно-синий",
+     "hex": "#1F2B5C",
+     "imgs": [
+      "img/pants-navy-jogger-flat-1.jpg",
+      "img/pants-navy-jogger-flat-2.jpg"
+     ]
+    }
+   ]
+  }
+ ]
 }
