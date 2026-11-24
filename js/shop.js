@@ -13,7 +13,7 @@ var ICON = function (id, cls) { return '<svg class="' + (cls || 'i') + '"><use h
 /* ===== разработчик сайта (пункт «Хотите похожий сайт?») ===== */
 var DEV_WA = '77476128411', DEV_PRETTY = '8 747 612 84 11';
 
-var D = null, S = {}, CART = [], cat = 'all', q = '', sort = 'def';
+var D = null, S = {}, CART = [], cat = 'all', q = '', sort = 'def', fsize = '';
 function waUrl(text, num) { return 'https://wa.me/' + (num || S.wa || '77026288740') + (text ? '?text=' + encodeURIComponent(text) : ''); }
 function catName(id) { for (var i = 0; i < D.cats.length; i++) if (D.cats[i].id === id) return D.cats[i].name; return ''; }
 function visible() { return D.products.filter(function (p) { return p.on; }); }
@@ -53,7 +53,7 @@ function paintPage() {
   $('#stFrom').textContent = prices.length ? money(Math.min.apply(null, prices)) : 'по запросу';
   var all = []; visible().forEach(function (p) { p.sizes.forEach(function (s) { var n = parseInt(s, 10); if (n) all.push(n); }); });
   $('#stSizes').textContent = all.length ? (Math.min.apply(null, all) === Math.max.apply(null, all) ? all[0] : Math.min.apply(null, all) + '–' + Math.max.apply(null, all)) : '2–12';
-  $('#sizeGrid').innerHTML = (S.sizeGuide || []).map(function (g) { return '<div class="sz rv"><b>' + esc(g.size) + '</b><span>' + esc(g.age) + '</span></div>'; }).join('');
+  $('#sizeGrid').innerHTML = (S.sizeGuide || []).map(function (g) { return '<button type="button" class="sz rv" data-size="' + esc(g.size) + '" aria-pressed="false"><b>' + esc(g.size) + '</b><span>' + esc(g.age) + '</span><em></em></button>'; }).join('');
   $('#sizes').hidden = !(S.sizeGuide || []).length;
   $('#aboutT').textContent = S.aboutTitle || nm;
   $('#aboutX').textContent = S.aboutText || '';
@@ -70,8 +70,49 @@ function paintPage() {
 }
 
 /* ===== каталог ===== */
+/* ===== фильтр по размеру ===== */
+function hasSize(p, s) { return p.sizes.some(function (x) { return String(x) === String(s); }); }
+function sizeOk(p) { return !fsize || hasSize(p, fsize); }
+function sizeCount(s) { return visible().filter(function (p) { return hasSize(p, s); }).length; }
+function sizeList() {
+  var seen = {}, out = [], extra = [];
+  (S.sizeGuide || []).forEach(function (g) { var k = String(g.size); if (!seen[k]) { seen[k] = 1; out.push(k); } });
+  visible().forEach(function (p) { p.sizes.forEach(function (x) { var k = String(x); if (!seen[k]) { seen[k] = 1; extra.push(k); } }); });
+  extra.sort(function (a, b) { return (parseFloat(a) || 0) - (parseFloat(b) || 0); });
+  return out.concat(extra);
+}
+/* ряд размеров над каталогом + подсветка карточек в разделе «Размеры» */
+function paintSizes() {
+  var all = sizeList(), box = $('#szf');
+  if (fsize && all.indexOf(fsize) < 0) fsize = '';
+  box.hidden = !all.length;
+  box.innerHTML = all.length ? '<span class="szl">Размер</span><button type="button" class="chip sm" data-fs="" aria-pressed="' + (!fsize) + '">Любой</button>' +
+    all.map(function (s) { var a = sizeAge(s), n = sizeCount(s); return '<button type="button" class="chip sm' + (n ? '' : ' none') + '" data-fs="' + esc(s) + '" aria-pressed="' + (fsize === s) + '">' + esc(s) + (a ? '<small>' + esc(a) + '</small>' : '') + '</button>'; }).join('') : '';
+  $$('#sizeGrid .sz').forEach(function (b) {
+    var s = b.dataset.size, n = sizeCount(s), em = $('em', b);
+    b.setAttribute('aria-pressed', fsize === s); b.classList.toggle('none', !n);
+    b.setAttribute('aria-label', 'Размер ' + s + ', ' + sizeAge(s) + (n ? ': ' + plural(n, 'товар', 'товара', 'товаров') : ': пока нет товаров'));
+    if (em) em.textContent = n ? plural(n, 'товар', 'товара', 'товаров') : 'пока нет';
+  });
+}
+function paintSizeBar(n) {
+  var bar = $('#szbar'); if (!bar) return;
+  if (!fsize) { bar.hidden = true; bar.innerHTML = ''; return; }
+  var a = sizeAge(fsize);
+  bar.hidden = false;
+  bar.innerHTML = '<span>Размер <b>' + esc(fsize) + '</b>' + (a ? ' · ' + esc(a) : '') + ': ' + (n ? plural(n, 'товар', 'товара', 'товаров') : 'пока ничего нет') + '</span><button type="button" data-fs="">Показать все</button>';
+}
+function setSize(s, scroll) {
+  fsize = (s && fsize !== s) ? s : '';
+  paintCats(); paintSizes(); paintGrid();
+  if (scroll && fsize) {
+    var t = $('#catalog .tools'), reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (t && t.scrollIntoView) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+}
+
 function paintCats() {
-  var vis = visible(), used = D.cats.filter(function (c) { return vis.some(function (p) { return p.cat === c.id; }); });
+  var vis = visible().filter(sizeOk), used = D.cats.filter(function (c) { return vis.some(function (p) { return p.cat === c.id; }); });
   if (cat !== 'all' && !used.some(function (c) { return c.id === cat; })) cat = 'all';
   $('#cats').innerHTML = '<button class="chip" data-cat="all" aria-pressed="' + (cat === 'all') + '">Все<small>' + vis.length + '</small></button>' +
     used.map(function (c) { var n = vis.filter(function (p) { return p.cat === c.id; }).length; return '<button class="chip" data-cat="' + esc(c.id) + '" aria-pressed="' + (cat === c.id) + '">' + esc(c.name) + '<small>' + n + '</small></button>'; }).join('');
@@ -79,6 +120,7 @@ function paintCats() {
 function list() {
   var qq = q.trim().toLowerCase(), arr = visible().filter(function (p) {
     if (cat !== 'all' && p.cat !== cat) return false;
+    if (!sizeOk(p)) return false;
     if (!qq) return true;
     var hay = (p.name + ' ' + p.desc + ' ' + catName(p.cat) + ' ' + p.colors.map(function (c) { return c.name; }).join(' ')).toLowerCase();
     return qq.split(/\s+/).every(function (w) { return hay.indexOf(w) >= 0; });
@@ -114,11 +156,18 @@ function cardHTML(p) {
 }
 function paintGrid() {
   var arr = list();
+  var ask = fsize && !q ? 'Здравствуйте! Ищу размер ' + fsize + (sizeAge(fsize) ? ' (' + sizeAge(fsize) + ')' : '') + '.' : 'Здравствуйте! Ищу: ' + q;
+  var link = '<a class="wa-link" style="color:var(--cara);font-weight:700;text-decoration:underline" target="_blank" rel="noopener" href="' + esc(waUrl(ask)) + '">спросите в WhatsApp</a>';
   $('#grid').innerHTML = arr.length ? arr.map(cardHTML).join('') :
-    '<div class="empty"><b>Ничего не нашлось</b>' + (q ? 'Попробуйте другое слово или ' : 'Загляните позже или ') + '<a class="wa-link" style="color:var(--cara);font-weight:700;text-decoration:underline" target="_blank" rel="noopener" href="' + esc(waUrl('Здравствуйте! Ищу: ' + q)) + '">спросите в WhatsApp</a></div>';
+    (fsize ? '<div class="empty"><b>В размере ' + esc(fsize) + ' пока ничего нет</b>Выберите другой размер или ' + link + '</div>' :
+      '<div class="empty"><b>Ничего не нашлось</b>' + (q ? 'Попробуйте другое слово или ' : 'Загляните позже или ') + link + '</div>');
+  paintSizeBar(arr.length);
   observe();
 }
 $('#cats').addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (!b) return; cat = b.dataset.cat; paintCats(); paintGrid(); });
+$('#szf').addEventListener('click', function (e) { var b = e.target.closest('[data-fs]'); if (b) setSize(b.dataset.fs, false); });
+$('#szbar').addEventListener('click', function (e) { if (e.target.closest('[data-fs]')) setSize('', false); });
+$('#sizeGrid').addEventListener('click', function (e) { var b = e.target.closest('.sz'); if (b) setSize(b.dataset.size, true); });
 $('#sort').addEventListener('change', function () { sort = this.value; paintGrid(); });
 var qT = null;
 $('#q').addEventListener('input', function () { q = this.value; $('#qx').hidden = !q; clearTimeout(qT); qT = setTimeout(paintGrid, 120); });
@@ -146,7 +195,7 @@ document.addEventListener('keydown', function (e) {
 var P = null, ps = { ci: 0, size: null, qty: 1 };
 function openProduct(id) {
   P = findP(id); if (!P) return;
-  ps = { ci: 0, size: P.sizes.length === 1 ? P.sizes[0] : null, qty: 1 };
+  ps = { ci: 0, size: P.sizes.length === 1 ? P.sizes[0] : (fsize && hasSize(P, fsize) ? String(fsize) : null), qty: 1 };
   paintProduct(); openSheet('p', true);
   history.replaceState(null, '', '#p=' + encodeURIComponent(id));
 }
@@ -335,7 +384,7 @@ function observe() {
 
 /* ===== старт ===== */
 function start(d) {
-  D = d; paintPage(); paintCats(); paintGrid(); loadCart(); paintCartBar();
+  D = d; paintPage(); paintSizes(); paintCats(); paintGrid(); loadCart(); paintCartBar();
   var m = /^#p=(.+)$/.exec(location.hash); if (m && findP(decodeURIComponent(m[1]))) openProduct(decodeURIComponent(m[1]));
 }
 Store.load().then(start).catch(function () {

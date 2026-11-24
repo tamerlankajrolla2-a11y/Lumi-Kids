@@ -189,6 +189,20 @@ h2 em{font-style:italic;color:var(--cara)}
 .sz:nth-child(4n+1){background:color-mix(in srgb,var(--blush) 55%,var(--card))}
 .sz:nth-child(4n+2){background:color-mix(in srgb,var(--sand) 60%,var(--card))}
 .sz:nth-child(4n+3){background:color-mix(in srgb,var(--sage) 35%,var(--card))}
+.sz{display:block;width:100%;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.sz em{display:block;font-style:normal;font-size:.7rem;font-weight:700;margin-top:7px;color:var(--cara-d)}
+.sz.none em{color:var(--muted);font-weight:600}
+.sz[aria-pressed="true"]{background:var(--ink)!important;color:var(--bg);border-color:var(--ink)}
+.sz[aria-pressed="true"] span,.sz[aria-pressed="true"] em{color:inherit;opacity:.8}
+@media(hover:hover){.sz:hover{transform:translateY(-3px)}}
+.szf{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 18px 6px;margin:6px -18px 0}
+.szf::-webkit-scrollbar{display:none}
+.szl{flex:none;font-weight:800;font-size:.82rem;color:var(--muted);margin-right:2px}
+.chip.sm{height:36px;padding:0 13px;font-size:.84rem}
+.chip.none{opacity:.5}
+.szbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:10px 0 4px;padding:10px 14px;border-radius:14px;background:color-mix(in srgb,var(--sand) 55%,var(--card));font-size:.9rem}
+.szbar button{flex:none;font-weight:800;text-decoration:underline;text-underline-offset:3px;color:var(--cara-d)}
+@media(min-width:760px){.szf{margin:6px 0 0;padding:2px 0 6px;flex-wrap:wrap}}
 .hintl{margin-top:14px;color:var(--muted);font-size:.92rem}
 .hintl a{color:var(--cara);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 
@@ -435,13 +449,15 @@ html[data-theme="dark"] .wq{color:#5fd08f}
         </div>
         <div class="chips" id="cats" role="group" aria-label="Категории"></div>
       </div>
+      <div class="szf" id="szf" role="group" aria-label="Размер" hidden></div>
+      <div class="szbar" id="szbar" role="status" hidden></div>
       <div class="grid" id="grid"><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
     </div>
   </section>
 
   <section id="sizes">
     <div class="wrap">
-      <div class="sh rv"><span class="kick">Размеры</span><h2>Размер = <em>рост</em> ребёнка</h2><p class="sub">Размер одежды — это рост ребёнка в сантиметрах. Если рост между размерами, берите больший.</p></div>
+      <div class="sh rv"><span class="kick">Размеры</span><h2>Размер = <em>рост</em> ребёнка</h2><p class="sub">Размер одежды — это рост ребёнка в сантиметрах. Если рост между размерами, берите больший. Нажмите на размер, и в каталоге останутся только товары в нём.</p></div>
       <div class="sizes" id="sizeGrid"></div>
       <p class="hintl rv">Не уверены в размере? <a class="wa-link" href="#" target="_blank" rel="noopener" data-msg="Здравствуйте! Помогите подобрать размер. Рост ребёнка: ">Напишите нам рост ребёнка</a> — подскажем.</p>
     </div>
