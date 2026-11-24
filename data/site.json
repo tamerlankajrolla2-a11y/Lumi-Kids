@@ -1,5 +1,5 @@
 {
- "rev": 3,
+ "rev": 4,
  "settings": {
   "name": "LUMI KIDS",
   "tagline": "Детская одежда · 2–12 лет",
@@ -202,6 +202,7 @@
      "imgs": [
       "img/bomber-navy-girl-1.jpg",
       "img/bomber-navy-girl-2.jpg",
+      "img/bomber-navy-girl-3.jpg",
       "img/cat-bomber-navy.jpg",
       "img/bomber-navy-snaps-flat-1.jpg",
       "img/bomber-navy-snaps-flat-2.jpg"
@@ -378,6 +379,7 @@
      "imgs": [
       "img/bomber-pink-girl-1.jpg",
       "img/bomber-pink-girl-2.jpg",
+      "img/bomber-pink-girl-3.jpg",
       "img/bomber-pink-flat-1.jpg",
       "img/bomber-pink-flat-2.jpg",
       "img/bomber-pink-flat-3.jpg"
@@ -389,6 +391,7 @@
      "imgs": [
       "img/bomber-grey-girl-1.jpg",
       "img/bomber-grey-girl-2.jpg",
+      "img/bomber-grey-girl-3.jpg",
       "img/bomber-grey-flat-1.jpg",
       "img/bomber-grey-flat-2.jpg"
      ]
