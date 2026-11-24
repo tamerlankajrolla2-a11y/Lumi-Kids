@@ -1,5 +1,5 @@
 {
- "rev": 2,
+ "rev": 3,
  "settings": {
   "name": "LUMI KIDS",
   "tagline": "Детская одежда · 2–12 лет",
@@ -110,6 +110,9 @@
      "hex": "#E4574C",
      "imgs": [
       "img/cat-dvoyka-redwhite-girl.jpg",
+      "img/dvoyka-redwhite-girl-1.jpg",
+      "img/dvoyka-redwhite-girl-2.jpg",
+      "img/dvoyka-redwhite-girl-3.jpg",
       "img/dvoyka-redwhite-flat-1.jpg"
      ]
     },
@@ -119,6 +122,7 @@
      "imgs": [
       "img/dvoyka-red-1.jpg",
       "img/dvoyka-red-2.jpg",
+      "img/dvoyka-red-3.jpg",
       "img/dvoyka-red-flat-1.jpg",
       "img/dvoyka-red-flat-2.jpg"
      ]
@@ -129,6 +133,7 @@
      "imgs": [
       "img/dvoyka-lilac-1.jpg",
       "img/dvoyka-lilac-2.jpg",
+      "img/dvoyka-lilac-3.jpg",
       "img/dvoyka-lilac-flat-1.jpg",
       "img/dvoyka-lilac-flat-2.jpg"
      ]
@@ -166,6 +171,7 @@
      "imgs": [
       "img/set-black-girl-1.jpg",
       "img/set-black-girl-2.jpg",
+      "img/set-black-girl-3.jpg",
       "img/cat-set-black-skirt-card.jpg",
       "img/set-black-flat.jpg"
      ]
@@ -227,6 +233,7 @@
      "imgs": [
       "img/bomber-black-boy-1.jpg",
       "img/bomber-black-boy-2.jpg",
+      "img/bomber-black-boy-3.jpg",
       "img/cat-set-boy-black-card.jpg"
      ]
     }
@@ -369,6 +376,8 @@
      "name": "Розовый",
      "hex": "#F1BFC9",
      "imgs": [
+      "img/bomber-pink-girl-1.jpg",
+      "img/bomber-pink-girl-2.jpg",
       "img/bomber-pink-flat-1.jpg",
       "img/bomber-pink-flat-2.jpg",
       "img/bomber-pink-flat-3.jpg"
@@ -378,6 +387,8 @@
      "name": "Серый",
      "hex": "#BFC1C6",
      "imgs": [
+      "img/bomber-grey-girl-1.jpg",
+      "img/bomber-grey-girl-2.jpg",
       "img/bomber-grey-flat-1.jpg",
       "img/bomber-grey-flat-2.jpg"
      ]
